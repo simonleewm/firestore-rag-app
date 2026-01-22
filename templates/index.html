@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">{{config.botname}}</h1>
+    <p class="col-md-8 fs-4">{{config.subtitle}}</p>
+  </div>
+</div>
+
+<div id="responses" class="alert alert-info" role="alert">
+   {{ config.message | safe }}
+</div>
+
+<form method="POST" class="mt-4">
+<div class="mb-3">
+    <label for="input" class="form-label">Ask {{config.botname}}:</label>
+    <input type="text" value="{{config.input}}" id="input" name="input" class="form-control" />
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
