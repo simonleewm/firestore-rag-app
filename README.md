@@ -130,7 +130,7 @@ This guide demonstrates how to build a real-world Generative AI Q&A solution usi
     d. **Create the Firestore vector index on the embedding field, which allows us later to query on this index:**
 
     ```bash
-    gcloud firestore indexes composite create --collection-group=nutrition-and-cancer --query-scope=COLLECTION --field-config=vector-config='{\"dimension\":\"768\",\"flat\": \"{}\"}',field-path=embedding
+    gcloud firestore indexes composite create --collection-group=nutrition-and-cancer --query-scope=COLLECTION --field-config=vector-config='{"dimension":"768","flat": "{}"}',field-path=embedding
     ```
 
     e. **Test the Vector Search**

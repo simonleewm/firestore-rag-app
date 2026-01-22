@@ -15,7 +15,7 @@ from google.cloud import firestore
 from google.cloud.firestore_v1.vector import Vector
 from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
 
-PROJECT_ID='<YOUR_PROJECT_ID>'
+PROJECT_ID='qwiklabs-gcp-01-02da72d36ae2'
 LOCATION='us-central1'
 
 vertexai.init(project=PROJECT_ID, location=LOCATION)
@@ -28,11 +28,11 @@ data = loader.load()
 def clean_page(page):
     return page.page_content.replace("-\\n","").replace("\\n"," ").replace("\\x02","").replace("\\x03","")
 
-cleaned_pages = [clean_page(page) for page in data]
-text_splitter = SemanticChunker(embedding_model)
-chunked_content = text_splitter.create_documents(cleaned_pages)
-chunked_content = [chunk.page_content for chunk in chunked_content if chunk.page_content]
-chunked_embeddings = embedding_model.embed_documents(chunked_content)
+# cleaned_pages = [clean_page(page) for page in data]
+# text_splitter = SemanticChunker(embedding_model)
+# chunked_content = text_splitter.create_documents(cleaned_pages)
+# chunked_content = [chunk.page_content for chunk in chunked_content if chunk.page_content]
+# chunked_embeddings = embedding_model.embed_documents(chunked_content)
 
 
 # Save the chunked content and embeddings to pickle files
@@ -43,8 +43,8 @@ with open("chunked_embeddings.pkl", "wb") as f:
     pickle.dump(chunked_embeddings, f)
 
 # Load the chunked content and embeddings from pickle files
-# chunked_content = pickle.load(open("chunked_content.pkl", "rb"))
-# chunked_embeddings = pickle.load(open("chunked_embeddings.pkl", "rb"))
+chunked_content = pickle.load(open("chunked_content.pkl", "rb"))
+chunked_embeddings = pickle.load(open("chunked_embeddings.pkl", "rb"))
 
 
 # Logging setup
